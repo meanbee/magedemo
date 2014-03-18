@@ -8,10 +8,10 @@ class Config {
     const DEFAULT_INSTALL_DIR = "~/.magedemo/web/";
     const DEFAULT_BACKUP_DIR = "~/.magedemo/backups/";
 
-    const DEFAULT_DB_HOST = "localhost";
-    const DEFAULT_DB_USER = "root";
-    const DEFAULT_DB_PASS = "root";
-    const DEFAULT_DB_NAME = "mage_demo";
+    const DEFAULT_DB_HOST   = "localhost";
+    const DEFAULT_DB_USER   = "root";
+    const DEFAULT_DB_PASS   = "root";
+    const DEFAULT_DB_PREFIX = "magedemo_";
 
     const DEFAULT_SAMPLE_DATA = true;
 
@@ -22,10 +22,10 @@ class Config {
 
     public function __construct($data) {
         $this->db = array(
-            'host' => static::DEFAULT_DB_HOST,
-            'user' => static::DEFAULT_DB_USER,
-            'pass' => static::DEFAULT_DB_PASS,
-            'name' => static::DEFAULT_DB_NAME
+            'host'   => static::DEFAULT_DB_HOST,
+            'user'   => static::DEFAULT_DB_USER,
+            'pass'   => static::DEFAULT_DB_PASS,
+            'prefix' => static::DEFAULT_DB_PREFIX
         );
         if (isset($data['db']) && is_array($data['db'])) {
             $this->db = array_merge($this->db, $data['db']);
@@ -44,19 +44,19 @@ class Config {
     }
 
     public function getDbHost() {
-        return $this->db->host;
+        return $this->db["host"];
     }
 
     public function getDbUser() {
-        return $this->db->user;
+        return $this->db["user"];
     }
 
     public function getDbPass() {
-        return $this->db->pass;
+        return $this->db["pass"];
     }
 
-    public function getDbName() {
-        return $this->db->name;
+    public function getDbPrefix() {
+        return $this->db["prefix"];
     }
 
     public function getInstallDir() {
@@ -123,6 +123,8 @@ class Config {
         if (!is_array($data['extensions'])) {
             $data['extensions'] = array($data['extensions']);
         }
+
+        $data['db_name'] = $this->getDbPrefix() . $id;
 
         $this->targets[$id] = $data;
 
