@@ -11,12 +11,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "fff913d6de5ec8c4315f466cf203c3e0acc3218a"
+                "reference": "70a20ebcc19f1ea8ab0954a4fbdce208b30085e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/fff913d6de5ec8c4315f466cf203c3e0acc3218a",
-                "reference": "fff913d6de5ec8c4315f466cf203c3e0acc3218a",
+                "url": "https://api.github.com/repos/composer/composer/zipball/70a20ebcc19f1ea8ab0954a4fbdce208b30085e7",
+                "reference": "70a20ebcc19f1ea8ab0954a4fbdce208b30085e7",
                 "shasum": ""
             },
             "require": {
@@ -72,7 +72,7 @@
                 "dependency",
                 "package"
             ],
-            "time": "2014-03-01 20:25:32"
+            "time": "2014-03-12 16:07:58"
         },
         {
             "name": "fzaninotto/faker",
@@ -126,12 +126,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/justinrainbow/json-schema.git",
-                "reference": "14f43276660250c474f7ebe27a8f2a47a4d5fe4d"
+                "reference": "d97cf3ce890fe80f247fc08594a1c8a1029fc7ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/justinrainbow/json-schema/zipball/14f43276660250c474f7ebe27a8f2a47a4d5fe4d",
-                "reference": "14f43276660250c474f7ebe27a8f2a47a4d5fe4d",
+                "url": "https://api.github.com/repos/justinrainbow/json-schema/zipball/d97cf3ce890fe80f247fc08594a1c8a1029fc7ed",
+                "reference": "d97cf3ce890fe80f247fc08594a1c8a1029fc7ed",
                 "shasum": ""
             },
             "require": {
@@ -186,7 +186,7 @@
                 "json",
                 "schema"
             ],
-            "time": "2014-03-02 15:30:04"
+            "time": "2014-03-05 15:03:52"
         },
         {
             "name": "n98/junit-xml",
@@ -784,12 +784,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig.git",
-                "reference": "8c5844a56fe5cbe13ef3becd9ed9f7b3ade104a2"
+                "reference": "dab8d90755a7c1a54cd20be5098f5b5bf3346d9b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig/zipball/8c5844a56fe5cbe13ef3becd9ed9f7b3ade104a2",
-                "reference": "8c5844a56fe5cbe13ef3becd9ed9f7b3ade104a2",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/dab8d90755a7c1a54cd20be5098f5b5bf3346d9b",
+                "reference": "dab8d90755a7c1a54cd20be5098f5b5bf3346d9b",
                 "shasum": ""
             },
             "require": {
@@ -833,7 +833,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2014-02-24 15:39:56"
+            "time": "2014-03-15 10:50:05"
         }
     ],
     "packages-dev": [
