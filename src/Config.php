@@ -5,8 +5,8 @@ class Config {
 
     const DEFAULT_CONFIG_FILE = "config.yaml";
 
-    const DEFAULT_INSTALL_DIR = "web/";
-    const DEFAULT_BACKUP_DIR = "backups/";
+    const DEFAULT_INSTALL_DIR = "web";
+    const DEFAULT_BACKUP_DIR = "backups";
 
     const DEFAULT_BASE_URL = "http://magedemo.dev/";
 
@@ -36,9 +36,15 @@ class Config {
             $this->db = array_merge($this->db, $data['db']);
         }
 
-        $this->install_dir = (isset($data['install_dir'])) ? $data['install_dir'] : static::DEFAULT_INSTALL_DIR;
+        $this->install_dir = (isset($data['install_dir'])) ? $data['install_dir'] : getcwd() . DIRECTORY_SEPARATOR . static::DEFAULT_INSTALL_DIR;
+        if (substr($this->install_dir, -1) === DIRECTORY_SEPARATOR) {
+            $this->install_dir = substr($this->install_dir, 0, -1);
+        }
 
-        $this->backup_dir = (isset($data['backup_dir'])) ? $data['backup_dir'] : static::DEFAULT_BACKUP_DIR;
+        $this->backup_dir = (isset($data['backup_dir'])) ? $data['backup_dir'] : getcwd() . DIRECTORY_SEPARATOR . static::DEFAULT_BACKUP_DIR;
+        if (substr($this->backup_dir, -1) === DIRECTORY_SEPARATOR) {
+            $this->backup_dir = substr($this->backup_dir, 0, -1);
+        }
 
         $this->base_url = (isset($data['base_url'])) ? $data['base_url'] : static::DEFAULT_BASE_URL;
         if (substr($this->base_url, -1) !== "/") {
@@ -142,7 +148,7 @@ class Config {
             $data['extensions'] = array($data['extensions']);
         }
 
-        $data['install_dir'] = (isset($data['install_dir'])) ? $data['install_dir'] : $this->getInstallDir() . "/$id";
+        $data['install_dir'] = (isset($data['install_dir'])) ? $data['install_dir'] : $this->getInstallDir() . DIRECTORY_SEPARATOR . "$id";
 
         $data['db_name'] = (isset($data['db_name'])) ? $data['db_name'] : $this->getDbPrefix() . $id;
 
