@@ -9,6 +9,7 @@ class Config {
     const DEFAULT_BACKUP_DIR = "backups/";
 
     const DEFAULT_DB_HOST   = "localhost";
+    const DEFAULT_DB_PORT   = "3306";
     const DEFAULT_DB_USER   = "root";
     const DEFAULT_DB_PASS   = "root";
     const DEFAULT_DB_PREFIX = "magedemo_";
@@ -23,6 +24,7 @@ class Config {
     public function __construct($data) {
         $this->db = array(
             'host'   => static::DEFAULT_DB_HOST,
+            'port'   => static::DEFAULT_DB_PORT,
             'user'   => static::DEFAULT_DB_USER,
             'pass'   => static::DEFAULT_DB_PASS,
             'prefix' => static::DEFAULT_DB_PREFIX
@@ -45,6 +47,10 @@ class Config {
 
     public function getDbHost() {
         return $this->db["host"];
+    }
+
+    public function getDbPort() {
+        return $this->db["port"];
     }
 
     public function getDbUser() {
