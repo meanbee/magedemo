@@ -3,8 +3,6 @@ namespace Meanbee\MageDemo;
 
 class Config {
 
-    const DEFAULT_CONFIG_FILE = "config.yaml";
-
     const DEFAULT_INSTALL_DIR = "web";
     const DEFAULT_BACKUP_DIR = "backups";
 

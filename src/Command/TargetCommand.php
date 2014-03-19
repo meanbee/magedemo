@@ -85,8 +85,10 @@ class TargetCommand extends Command {
     protected function configure() {
         parent::configure();
 
+        $default_config_file = getcwd() . DIRECTORY_SEPARATOR . "config.yaml";
+
         $this
-            ->addOption('config', 'c', InputOption::VALUE_REQUIRED, 'Configuration file to use.')
+            ->addOption('config', 'c', InputOption::VALUE_REQUIRED, 'Configuration file to use.', $default_config_file)
             ->addOption('all', null, InputOption::VALUE_NONE, 'Run the command for all defined targets.')
             ->addArgument('target', InputArgument::IS_ARRAY, 'List of targets to run the command for.');
     }
@@ -108,7 +110,7 @@ class TargetCommand extends Command {
      * @throws \Exception
      */
     protected function loadConfigFile(InputInterface $input) {
-        $config_file = ($input->hasOption('config')) ? $input->getOption('config') : Config::DEFAULT_CONFIG_FILE;
+        $config_file = $input->getOption('config');
 
         if (!file_exists($config_file)) {
             throw new \Exception(sprintf("Configuration file '%s' does not exist.", $config_file));
