@@ -6,7 +6,7 @@ $autoload_files = array(
 
 foreach ($autoload_files as $autoload_file) {
     if (file_exists($autoload_file)) {
-        require_once $autoload_file;
+        $loader = require_once $autoload_file;
         break;
     }
 }
@@ -15,5 +15,5 @@ if (!class_exists("Composer\Autoload\ClassLoader")) {
     trigger_error("Dependencies have not been installed. Have you run 'composer install'?", E_USER_ERROR);
 }
 
-$application = new Meanbee\MageDemo\Application();
+$application = new Meanbee\MageDemo\Application($loader);
 $application->run();
