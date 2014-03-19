@@ -1,6 +1,8 @@
 <?php
 namespace Meanbee\MageDemo;
 
+use Meanbee\MageDemo\Command\InstallCommand;
+
 class Application extends \Symfony\Component\Console\Application {
 
     const APP_NAME = "Mage Demo";
@@ -14,6 +16,8 @@ class Application extends \Symfony\Component\Console\Application {
         if ($autoloader !== null) {
             $this->setAutoloader($autoloader);
         }
+
+        $this->add(new InstallCommand());
     }
 
     public function getAutoloader() {
