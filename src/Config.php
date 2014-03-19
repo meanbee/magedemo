@@ -142,7 +142,11 @@ class Config {
             $data['extensions'] = array($data['extensions']);
         }
 
-        $data['db_name'] = $this->getDbPrefix() . $id;
+        $data['install_dir'] = (isset($data['install_dir'])) ? $data['install_dir'] : $this->getInstallDir() . "/$id";
+
+        $data['db_name'] = (isset($data['db_name'])) ? $data['db_name'] : $this->getDbPrefix() . $id;
+
+        $data['base_url'] = (isset($data['base_url'])) ? $data['base_url'] : $this->getBaseUrl() . "$id/";
 
         $this->targets[$id] = $data;
 
