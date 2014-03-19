@@ -8,6 +8,8 @@ class Config {
     const DEFAULT_INSTALL_DIR = "web/";
     const DEFAULT_BACKUP_DIR = "backups/";
 
+    const DEFAULT_BASE_URL = "http://magedemo.dev/";
+
     const DEFAULT_DB_HOST   = "localhost";
     const DEFAULT_DB_PORT   = "3306";
     const DEFAULT_DB_USER   = "root";
@@ -19,6 +21,7 @@ class Config {
     protected $db;
     protected $install_dir;
     protected $backup_dir;
+    protected $base_url;
     protected $targets;
 
     public function __construct($data) {
@@ -36,6 +39,11 @@ class Config {
         $this->install_dir = (isset($data['install_dir'])) ? $data['install_dir'] : static::DEFAULT_INSTALL_DIR;
 
         $this->backup_dir = (isset($data['backup_dir'])) ? $data['backup_dir'] : static::DEFAULT_BACKUP_DIR;
+
+        $this->base_url = (isset($data['base_url'])) ? $data['base_url'] : static::DEFAULT_BASE_URL;
+        if (substr($this->base_url, -1) !== "/") {
+            $this->base_url .= "/";
+        }
 
         $this->targets = array();
         if (isset($data['targets']) && is_array($data['targets'])) {
@@ -71,6 +79,10 @@ class Config {
 
     public function getBackupDir() {
         return $this->backup_dir;
+    }
+
+    public function getBaseUrl() {
+        return $this->base_url;
     }
 
     /**
