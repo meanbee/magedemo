@@ -3,73 +3,10 @@ namespace Meanbee\MageDemo\Command;
 
 use Meanbee\MageDemo\Modman;
 use Symfony\Component\Console\Input\ArrayInput;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class InstallCommand extends ConfigFileCommand {
-
-    /** @var InputInterface $input */
-    protected $input;
-    /** @var OutputInterface $output */
-    protected $output;
-
-    /** @var \N98\Magento\Application $magerun */
-    protected $magerun;
-
-    public function setInput(InputInterface $input) {
-        $this->input = $input;
-
-        return $this;
-    }
-
-    public function getInput() {
-        return $this->input;
-    }
-
-    public function setOutput(OutputInterface $output) {
-        $this->output = $output;
-
-        return $this;
-    }
-
-    public function getOutput() {
-        return $this->output;
-    }
-
-    public function getMagerun() {
-        if (!$this->magerun) {
-            $this->magerun = new \N98\Magento\Application($this->getApplication()->getAutoloader());
-            $this->magerun->init();
-        }
-
-        return $this->magerun;
-    }
-
-    /**
-     * Run the installation for the given target.
-     *
-     * @param $id
-     */
-    public function installTarget($id) {
-        if (!$this->config->hasTarget($id)) {
-            return;
-        }
-
-        $target = $this->config->getTarget($id);
-        $output = $this->getOutput();
-
-        if (!$output->isQuiet()) {
-            $output->writeln(sprintf("Installing target '%s'.", $id));
-        }
-
-        $this->installMagento($target);
-        $this->installExtensions($target);
-
-        if (!$output->isQuiet()) {
-            $output->writeln(sprintf("Target '%s' installed.", $id));
-        }
-    }
+class InstallCommand extends TargetCommand {
 
     /**
      * Use Magerun to run a Magento installation for the specified target.
@@ -136,20 +73,23 @@ class InstallCommand extends ConfigFileCommand {
 
         $this
             ->setName('install')
-            ->setDescription('Install a target from the configuration.')
-            ->addArgument('target', InputArgument::REQUIRED, "The name of target to install.");
+            ->setDescription('Install one or more configured targets.');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output) {
-        $this->setInput($input);
-        $this->setOutput($output);
+        foreach ($this->targets as $target) {
+            if (!$output->isQuiet()) {
+                $output->writeln(sprintf("Installing target '%s'...", $target));
+            }
 
-        $target = $input->getArgument('target');
+            $target_data = $this->config->getTarget($target);
 
-        if (!$this->config->hasTarget($target)) {
-            throw new \Exception(sprintf("Target '%s' does not exist.", $target));
+            $this->installMagento($target_data);
+            $this->installExtensions($target_data);
+
+            if (!$output->isQuiet()) {
+                $output->writeln(sprintf("Target '%s' installed.", $target));
+            }
         }
-
-        $this->installTarget($target);
     }
 }
