@@ -3,10 +3,10 @@ namespace Meanbee\MageDemo;
 
 class Config {
 
-    const DEFAULT_CONFIG_FILE = "~/.magedemo/config.yaml";
+    const DEFAULT_CONFIG_FILE = "config.yaml";
 
-    const DEFAULT_INSTALL_DIR = "~/.magedemo/web/";
-    const DEFAULT_BACKUP_DIR = "~/.magedemo/backups/";
+    const DEFAULT_INSTALL_DIR = "web/";
+    const DEFAULT_BACKUP_DIR = "backups/";
 
     const DEFAULT_DB_HOST   = "localhost";
     const DEFAULT_DB_USER   = "root";
