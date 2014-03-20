@@ -1,6 +1,7 @@
 <?php
 namespace Meanbee\MageDemo;
 
+use Meanbee\MageDemo\Command\DumpCommand;
 use Meanbee\MageDemo\Command\InstallCommand;
 
 class Application extends \Symfony\Component\Console\Application {
@@ -18,6 +19,7 @@ class Application extends \Symfony\Component\Console\Application {
         }
 
         $this->add(new InstallCommand());
+        $this->add(new DumpCommand());
     }
 
     public function getAutoloader() {

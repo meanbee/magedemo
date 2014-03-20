@@ -156,4 +156,17 @@ class Config {
 
         return $this;
     }
+
+    /**
+     * Return the configured filename for backups of the given target.
+     *
+     * @param $target
+     *
+     * @return string
+     */
+    public function getBackupFilename($target) {
+        $filename = sprintf("%s%s%s.sql", $this->getBackupDir(), DIRECTORY_SEPARATOR, $target);
+
+        return $filename;
+    }
 }
