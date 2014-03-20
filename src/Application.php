@@ -3,6 +3,7 @@ namespace Meanbee\MageDemo;
 
 use Meanbee\MageDemo\Command\DumpCommand;
 use Meanbee\MageDemo\Command\InstallCommand;
+use Meanbee\MageDemo\Command\RestoreCommand;
 
 class Application extends \Symfony\Component\Console\Application {
 
@@ -20,6 +21,7 @@ class Application extends \Symfony\Component\Console\Application {
 
         $this->add(new InstallCommand());
         $this->add(new DumpCommand());
+        $this->add(new RestoreCommand());
     }
 
     public function getAutoloader() {

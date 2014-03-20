@@ -165,7 +165,7 @@ class Config {
      * @return string
      */
     public function getBackupFilename($target) {
-        $filename = sprintf("%s%s%s.sql", $this->getBackupDir(), DIRECTORY_SEPARATOR, $target);
+        $filename = sprintf("%s%s%s.sql.gz", $this->getBackupDir(), DIRECTORY_SEPARATOR, $target);
 
         return $filename;
     }
